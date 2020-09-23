@@ -18,6 +18,9 @@
                     $('#chat').val($('#chat').val() + data.msg + '\n');
                     $('#chat').scrollTop($('#chat')[0].scrollHeight);
                 });
+                socket.on('erase', function(data) {
+                    eraseText();
+                });
                 $(document).keypress(function(e) {
                     var code = e.keyCode || e.which;
                     if (code == 13) {
@@ -35,6 +38,9 @@
                     window.location.href = "{{ url_for('main.index') }}";
                 });
             }
+            function eraseText() {
+    document.getElementById("chat").value = "";
+}
         </script>
     </head>
     <body>
